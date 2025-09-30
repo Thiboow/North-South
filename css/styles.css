@@ -1,0 +1,168 @@
+/*------------------------------------------------------------
+STYLES GENERAUX
+------------------------------------------------------------*/
+body html {
+    background-color: white;
+    color: black;
+    line-height: 1.5;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: 'Titres';
+    src: url('../font/Barlow_Condensed/BarlowCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+h1,
+h2 {
+    font-family: 'Titres', sans-serif;
+    margin-top: 75px;
+}
+
+
+/*------------------------------------------------------------
+Conteneur et éléments de base Flex
+------------------------------------------------------------*/
+
+.div-flexconteneur {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.div-flexconteneur .flex-items-2:nth-child(1) {
+    flex: 2;
+}
+
+.div-flexconteneur .flex-items-2:nth-child(2) {
+    flex: 1;
+    display: flex;
+    text-align: justify;
+}
+
+.div-flexconteneur .flex-items-1:nth-child(1) {
+    flex: 1;
+    display: flex;
+    text-align: justify;
+}
+
+.div-flexconteneur .flex-items-1:nth-child(2) {
+    flex: 2;
+}
+
+/*------------------------------------------------------------
+ENTETE
+------------------------------------------------------------*/
+header {}
+
+/*------------------------------------------------------------
+MAIN
+------------------------------------------------------------*/
+
+body {
+    #map {
+        height: 500px;
+    }
+
+    #container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #map-filtre {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #legende-carte {
+        margin-top: 50px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #source-graphique-1 {
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: -65px;
+    }
+
+    #source-graphique-1 {
+        margin-bottom: 100px;
+    }
+
+    #DataViz1 {
+        width: 100%;
+        height: auto;
+    }
+
+    #DataViz {
+        width: 100%;
+        height: auto;
+    }
+
+    .GraphiqueInteractif {
+        width: 65%;
+        height: auto;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+nav {}
+
+/*------------------------------------------------------------
+MENU NAVIGATION
+------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------
+FIL D'ARIANE
+------------------------------------------------------------*/
+
+
+
+
+/*------------------------------------------------------------
+FOOTER ET ELEMENTS DU FOOTER
+------------------------------------------------------------*/
+
+footer {
+    margin-top: 100px;
+    margin-left: 0%;
+    margin-right: 0%;
+    background-color: black;
+    text-align: center;
+    font-size: 0.9em;
+    height: 150px;
+    width: 100%;
+}
+
+footer div {
+    color: white;
+    padding: 20px 0;
+}
+
+
+/*------------------------------------------------------------
+ELEMENTS PAGE INDEX
+------------------------------------------------------------*/
