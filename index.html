@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="French movie theater" content="Dataviz project">
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen">
+
+    <link rel="icon" sizes="32x32" href="images/cropped-android-chrome-512x512-1-1-32x32.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="JS/cleave.min.js"></script>
+    <script src="JS/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+
+    <div id="container">
+
+        <div id="Introduction">
+            <h1>Cinephile? France is Made for You</h1>
+            <h2>Paris, Paris, always Paris.</h2>
+
+            <p>Paris makes people dream. In this city, triumphant monuments put stars in the eyes of visitors from
+                around the world. Arches don’t shoot arrows—they leave memories. Cathedrals don’t creak under the
+                weight of time or flames; they are filled by the warmth of millions of visitors. Culturally, Paris
+                holds an invaluable place in both national and international influence. 36.3 million tourists visited
+                the capital in 2024… 102 million across all of France—maybe you were one of them? In terms of culture,
+                France tops the charts as the most cinema-loving country in Europe, with 181.3 million admissions in
+                2024. Paris ranks fourth globally for the total number of cinemas, but first in density, with nearly
+                three cinemas per square kilometer—five times more than New York, the second on the list, far behind.
+                Yet, under the shadow of the Iron Lady, there’s a region also full of cinemas, each with its own
+                influence and audience. In the world’s most visited country, it’s essential to distinguish between
+                the capital and the rest of the French departments.</p>
+
+            <h2>Numbers that Tell a Different Story</h2>
+            <div class="div-flexconteneur">
+                <div class="flex-items-1">
+                    <p>Let’s take a concrete example: the departments of Loire and Haute-Loire. Together, they cover
+                        nearly
+                        9,758 km²—almost a hundred times the size of Paris (105 km²). Yet, there are only about forty
+                        cinemas
+                        across these two territories, while the capital boasts over 300. In other words, in Paris,
+                        there’s a
+                        cinema every 350 m², whereas in Loire + Haute-Loire, you have to cover an average of 226 km² to
+                        find
+                        one. These numbers seem ruthless: Paris concentrates the offer, while the countryside makes do
+                        with
+                        crumbs. But stopping at this simple comparison would be a mistake. Rural cinemas have their own
+                        identity, often bold programming, and a capacity to unite audiences that many urban multiplexes
+                        would
+                        envy.</p>
+                </div>
+                <div class="flex-items-1">
+                    <img id="DataViz" src="images/Dataviz/DataViz - Comparaison distance cinema.png"
+                        alt="Comparaison Cinemas Paris vs Loire+Haute-Loire">
+                </div>
+            </div>
+
+        </div>
+
+        <section id="CarteCinémas" class="card _mPS2id-t">
+            <h2>1 | Interactive Map of Cinemas in Both Regions</h2>
+            <p>The first graphic presents an interactive map of all cinemas recorded in the departments of Loire and
+                Haute-Loire. This graphic allows for a quick visualization of the geographic distribution of cinemas
+                across these departments.</p>
+
+            <div id="map-filtre">
+                <select id="région-select">
+                    <option value="TOUS">ALL</option>
+                    <option value="Loire">Loire</option>
+                    <option value="Haute-Loire">Haute-Loire</option>
+                </select>
+                <select id="siège-select">
+                    <option value="TOUS">ALL</option>
+                    <option value="Moins de 500 sièges">Less than 500 seats</option>
+                    <option value="Plus de 500 sièges">More than 500 seats</option>
+                </select>
+                <select id="influence-select">
+                    <option value="TOUS">ALL</option>
+                    <option value="Hors zone d'attraction">Outside catchment area</option>
+                    <option value="Zone d'attraction très faible">Very low catchment area</option>
+                    <option value="Zone d'attraction faible">Low catchment area</option>
+                    <option value="Zone d'attraction moyenne">Medium catchment area</option>
+                    <option value="Zone d'attraction forte">High catchment area</option>
+                    <option value="Zone d'attraction très forte">Very high catchment area</option>
+                    <option value="Zone d'attraction majeure">Major catchment area</option>
+                </select>
+            </div>
+            <div id="map">
+                <div id="map" style="height:400px;"></div>
+            </div>
+
+            <div id="legende-carte">
+                <img src="images/Legende V2.png" alt="Legend" style="width: 95%">
+            </div>
+            <div id="source-graphique-1" class="source">
+                Data source: <a
+                    href="https://data.culture.gouv.fr/explore/dataset/base-des-lieux-et-des-equipements-culturels/information/?disjunctive.sous_domaine&disjunctive.region&disjunctive.type_equipement_ou_lieu&disjunctive.domaine&disjunctive.label_et_appellation&disjunctive.departement&disjunctive.precision_equipement"
+                    target="_blank">data.gouv.fr</a>
+            </div>
+
+            <p>Exploring this map, you’ll notice cinemas scattered along valleys and around small towns, sometimes
+                isolated but firmly rooted in their territories. Some cover influence areas spanning tens of
+                kilometers, attracting audiences from communes with no other cultural options.</p>
+
+            <div class="GraphiqueInteractif">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div id="Coeur Du Sujet">
+                <h2>Human-Scale Cinemas, Unique Programming</h2>
+                <p>In these cinemas, there are no endless lines or overly long ads. They screen independent films,
+                    documentaries, and foreign works often absent from Parisian billboards. Festivals, special
+                    screenings, and director Q&As transform the venue into a true cultural hub. Data even shows that a
+                    cinema’s catchment area isn’t always correlated with its number of seats. On average, cinemas in
+                    Haute-Loire have 287 seats, those in Loire 501, but some mid-sized hubs (50,000 to under 200,000
+                    inhabitants) reach over 1,100 seats. Paradoxically, some larger urban areas cap around 800.</p>
+
+                <div class="div-flexconteneur">
+                    <div class="flex-items-2">
+                        <img id="DataViz1" src="images/Dataviz/DataViz 1 - Porportion Habitants_Sièges.png"
+                            alt="Seats per population proportion">
+                    </div>
+                    <div class="flex-items-2">
+                        <p>This chart illustrates the proportion of seats available in cinemas relative to the number of
+                            inhabitants. Using Haute-Loire as a baseline (index 100), Loire shows a marked contrast. It
+                            has about 3.4 times more inhabitants but nearly 6 times more cinema seats. In short: Loire
+                            is not only more populated but also better equipped to host audiences. This disparity
+                            reveals a more generous per-capita cinema offer than its neighbor, confirming that cinema
+                            placement also follows a logic of density and cultural attractiveness. It would be naive to
+                            assume that more seats guarantee better screenings. A small rural cinema can surprise with
+                            bold programming, while an urban multiplex mainly plays the volume game.</p>
+                    </div>
+                </div>
+
+                <h2>An Invitation for Traveling Cinephiles</h2>
+                <p>For visiting New Zealand cinephiles, these cinemas are more than a mere backup plan. They offer an
+                    immersive experience where a movie outing can be combined with a hike in the Loire gorges or a
+                    stroll through the Auvergne volcanoes. Their architecture, sometimes housed in former theaters
+                    or industrial buildings, adds a heritage touch that extends the magic of the screening. By
+                    supporting these cinemas, you also contribute to the local economy for cafes, restaurants, and
+                    neighborhood bookstores thrive in sync with screenings. It’s another way to travel like slower,
+                    more human, and closer to the locals.</p>
+
+                <h2>The Big Screen Beyond Big Cities</h2>
+                <p>Paris will always be Paris, the capital of lights and projectors. But Loire and Haute-Loire remind
+                    us that beyond the numbers, French cinema thrives far from the boulevards. So, on your next visit
+                    to France, let the interactive map guide you to one of these rural cinemas because you’ll discover
+                    films
+                    unavailable elsewhere and a living piece of French culture, far from the usual tourist clichés.</p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <div>
+            <p> © 2025 Thibaud Laurençon</p>
+            <p> Student at IUT Le Puy-en-Velay</p>
+            <p>(SAE 303-2) - Sept. 2025.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
